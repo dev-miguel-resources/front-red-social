@@ -1,0 +1,48 @@
+{
+  "env": {
+    // para config. definiciones globales del entorno
+    "browser": true, // verificar que se cumplan las reglas del eslint antes de que se propage al navegador
+    "es2021": true, // trabajar con versiones recientes del ECMASCRIPT
+    "jest/globals": true // dar soporte de reglas a las especificaciones definidas en la config del jest
+  },
+  // manejar un control de plugins
+  "extends": [
+    "plugin:react/recommended",
+    "standard",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended",
+    "plugin:jest/recommended"
+  ],
+  "parserOptions": {
+    // opciones de lectura de recursos soportados
+    "ecmaFeatures": {
+      "jsx": true // me permite incorporar lectura de eslint en archivos con extensión de jsx
+    },
+    "sourceType": "module" // verifica cada archivo como un módulo independiente
+  },
+  "settings": {
+    // configuraciones a nivel de librería
+    "react": {
+      "version": "detect" // habilitar una detección automática de adecuación de plugins para tu versión de react
+    },
+    "jest": {
+      "version": "detect", // habilitar una detección automática de adecuación de plugins para tu versión de jest
+      "globalAliases": {
+        "describe": ["context"] // definir alternativas de nombres para propiedades reservadas de jest
+      }
+    }
+  },
+  "rules": {
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }], // me permite verificar que al momento de formatear con prettier las reglas concuerden con el eslint
+    "semi": [2, "always"], // si no hay ; en las sentencias lo tome como error,
+    "quotes": ["error", "single"], // si no hay comillas simples lanzará error
+    "space-before-function-paren": [
+      0,
+      { "anonymous": "always", "named": "always" }
+    ], // le especifico un control abierto para el tema de los espacios
+    "camelcase": 2, // mis variables/funciones,etc deben ser descritos en formato camelCase
+    "no-return-assign": 0, // me permite retornar el resultado de una asignación de manera directa
+    "react/react-in-jsx-scope": 0, // me permite no tener que definir de manera ímplica la importación por default de react
+    "no-unused-vars": "warn" // me permite alertar cuando tenga variables sin darles uso dentro de un archivo
+  }
+}
